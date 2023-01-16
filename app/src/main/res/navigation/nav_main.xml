@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/playersFragment">
+
+    <fragment
+        android:id="@+id/playersFragment"
+        android:name="com.simphiwe.footballapp.ui.fragment.PlayersFragment"
+        android:label="Players"
+        tools:layout="@layout/fragment_players">
+    </fragment>
+
+    <fragment
+        android:id="@+id/teamsFragment"
+        android:name="com.simphiwe.footballapp.ui.fragment.TeamsFragment"
+        android:label="Teams"
+        tools:layout="@layout/fragment_teams">
+    </fragment>
+
+    <fragment
+        android:id="@+id/topScorersFragment"
+        android:name="com.simphiwe.footballapp.ui.fragment.TopScorersFragment"
+        android:label="Profile Fragment"
+        tools:layout="@layout/fragment_top_scorers" />
+
+</navigation>
