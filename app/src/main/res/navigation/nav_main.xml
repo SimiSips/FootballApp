@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/playersFragment"
-        android:name="com.simphiwe.footballapp.ui.fragment.PlayersFragment"
+        android:name="com.simphiwe.footballapp.view.fragment.players.PlayersFragment"
         android:label="Players"
         tools:layout="@layout/fragment_players">
     </fragment>

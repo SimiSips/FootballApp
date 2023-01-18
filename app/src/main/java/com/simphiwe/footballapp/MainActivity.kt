@@ -3,13 +3,10 @@ package com.simphiwe.footballapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.simphiwe.footballapp.databinding.ActivityMainBinding
-import com.simphiwe.footballapp.ui.fragment.PlayerListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

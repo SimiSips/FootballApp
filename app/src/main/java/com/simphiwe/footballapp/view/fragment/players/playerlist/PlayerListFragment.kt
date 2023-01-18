@@ -1,4 +1,4 @@
-package com.simphiwe.footballapp.ui.fragment
+package com.simphiwe.footballapp.view.fragment.players.playerlist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simphiwe.footballapp.R
 import com.simphiwe.footballapp.view.fragment.players.playerlist.adapter.RecyclerViewAdapter
-import com.simphiwe.footballapp.view.fragment.players.viewmodel.MainViewModel
+import com.simphiwe.footballapp.view.fragment.players.viewmodel.PlayerViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -46,11 +46,11 @@ class PlayerListFragment : Fragment() {
 
 
     private fun initViewModel() {
-        val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        val viewModel = ViewModelProvider(this)[PlayerViewModel::class.java]
         viewModel.getPlayerListObserver().observe(viewLifecycleOwner, Observer {
             if (it != null){
-                recyclerAdapter.setUpdatedData(it.response)
-                println(it.response[0].name)
+                //recyclerAdapter.setUpdatedData(it.name)
+                println(it.response)
             } else{
                 Toast.makeText(activity, "Error in getting data", Toast.LENGTH_SHORT).show()
             }

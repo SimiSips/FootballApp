@@ -7,16 +7,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.simphiwe.footballapp.R
-import com.simphiwe.footballapp.model.PlayerData
+import com.simphiwe.footballapp.view.fragment.players.model.Response
 import com.squareup.picasso.Picasso
 
 
 class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
 
-    var items = ArrayList<PlayerData>()
+    var items = ArrayList<Response>()
 
-    fun setUpdatedData(items: ArrayList<PlayerData>){
-        this.items = items
+    fun setUpdatedData(items: List<Response>){
+        this.items = items as ArrayList<Response>
         notifyDataSetChanged()
     }
     class MyViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -24,11 +24,11 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolde
         val name = view.findViewById<TextView>(R.id.name)
         val nationality = view.findViewById<TextView>(R.id.nationality)
 
-        fun bind(data: PlayerData){
-            name.text = data.name
-            nationality.text = data.nationality
+        fun bind(data: Response){
+            name.text = data.player.name
+            nationality.text = data.player.nationality
 
-            val url = data.photo
+            val url = data.player.photo
             Picasso.get().load(url).into(photo)
         }
     }

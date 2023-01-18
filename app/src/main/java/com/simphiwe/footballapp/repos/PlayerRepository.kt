@@ -1,10 +1,10 @@
 package com.simphiwe.footballapp.repos
 
-import com.simphiwe.footballapp.data.api.PlayerApi
-import javax.inject.Inject
+import com.simphiwe.footballapp.common.Resource
+import com.simphiwe.footballapp.view.fragment.players.model.PlayersResponse
 
-class PlayerRepository @Inject constructor(private val api: PlayerApi){
+interface PlayerRepository {
 
-    suspend fun getAllPlayers() = api.getAllPlayers()
+    suspend fun getPlayers(id: Int, season: Int): Resource<PlayersResponse>
 
 }
