@@ -1,21 +1,22 @@
 package com.simphiwe.footballapp.di
 
 import com.simphiwe.footballapp.BuildConfig
-import com.simphiwe.footballapp.data.api.PlayerApi
 import com.simphiwe.footballapp.constants.constants.BASE_URL
 import com.simphiwe.footballapp.data.api.AuthenticationInterceptor
+import com.simphiwe.footballapp.data.api.PlayerApi
 import com.simphiwe.footballapp.repos.PlayerRepository
 import com.simphiwe.footballapp.repos.PlayerRepositoryImpl
+import com.simphiwe.footballapp.repos.TeamsRepository
+import com.simphiwe.footballapp.repos.TeamsRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import javax.inject.Singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -42,4 +43,7 @@ object AppModule {
 
     @Provides
     fun providesPlayerRepository(api: PlayerApi): PlayerRepository = PlayerRepositoryImpl(api)
+
+    @Provides
+    fun providesSearchRepository(api: PlayerApi): TeamsRepository = TeamsRepositoryImpl(api)
 }

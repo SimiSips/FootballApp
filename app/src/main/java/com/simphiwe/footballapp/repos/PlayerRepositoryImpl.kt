@@ -7,9 +7,9 @@ import javax.inject.Inject
 
 class PlayerRepositoryImpl @Inject constructor(private val api: PlayerApi) : PlayerRepository {
 
-    override suspend fun getPlayers(id: Int, season: Int): Resource<PlayersResponse> {
+    override suspend fun getPlayers(team: Int, season: Int): Resource<PlayersResponse> {
         return try {
-            val response = api.getPlayers(id, season)
+            val response = api.getPlayers(team, season)
             val result = response.body()
             if(response.isSuccessful && result!=null) {
                 Resource.Success(result)

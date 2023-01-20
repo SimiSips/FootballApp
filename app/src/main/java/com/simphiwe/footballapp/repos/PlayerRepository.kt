@@ -5,6 +5,6 @@ import com.simphiwe.footballapp.view.fragment.players.model.PlayersResponse
 
 interface PlayerRepository {
 
-    suspend fun getPlayers(id: Int, season: Int): Resource<PlayersResponse>
+    suspend fun getPlayers(team: Int, season: Int): Resource<PlayersResponse>
 
 }
