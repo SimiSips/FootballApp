@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simphiwe.footballapp.MainActivity
+import com.simphiwe.footballapp.R
 import com.simphiwe.footballapp.common.UIState
 import com.simphiwe.footballapp.databinding.FragmentTeamsBinding
 import com.simphiwe.footballapp.view.fragment.teams.adapter.TeamsAdapter
@@ -73,14 +75,20 @@ class TeamsFragment : Fragment() {
                 is UIState.Success<*> -> {
                     errorText.visibility = View.GONE
                     progressBar.visibility = View.GONE
+
                     teamsState.result as TeamsResponse
-                    teamsAdapter.setUpdatedData(teamsState.result.response)
-
-
+                    if (teamsState.result.results == 0){
+                        errorText.text = getString(R.string.noCountry)
+                        errorText.visibility = View.VISIBLE
+                        Toast.makeText(context,getString(R.string.noCountry),Toast.LENGTH_SHORT).show();
+                    } else {
+                        teamsAdapter.setUpdatedData(teamsState.result.response)
+                    }
                 }
                 UIState.Empty -> TODO()
                 is UIState.Failure -> {
                     teamsState.errorText
+
                     progressBar.visibility = View.GONE
                     errorText.visibility = View.VISIBLE
                 }
