@@ -2,20 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.teams.TeamsFragment">
-
+    tools:context="MainActivity">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="Settings"/>
     <item
         android:id="@+id/action_share"
-        android:title="Share"
+        android:title="Sharre"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_exit"
         android:title="Quit"
         app:showAsAction="never"/>
-
-
 </menu>

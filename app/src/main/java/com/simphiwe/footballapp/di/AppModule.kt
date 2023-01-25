@@ -4,10 +4,10 @@ import com.simphiwe.footballapp.BuildConfig
 import com.simphiwe.footballapp.constants.constants.BASE_URL
 import com.simphiwe.footballapp.data.api.AuthenticationInterceptor
 import com.simphiwe.footballapp.data.api.PlayerApi
-import com.simphiwe.footballapp.repos.PlayerRepository
-import com.simphiwe.footballapp.repos.PlayerRepositoryImpl
-import com.simphiwe.footballapp.repos.TeamsRepository
-import com.simphiwe.footballapp.repos.TeamsRepositoryImpl
+import com.simphiwe.footballapp.repository.players.PlayerRepository
+import com.simphiwe.footballapp.repository.players.PlayerRepositoryImpl
+import com.simphiwe.footballapp.repository.teams.TeamsRepository
+import com.simphiwe.footballapp.repository.teams.TeamsRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +16,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)

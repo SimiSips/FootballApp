@@ -1,9 +1,9 @@
 package com.simphiwe.footballapp.data.api
 
-import com.simphiwe.footballapp.view.fragment.players.model.PlayersResponse
-import com.simphiwe.footballapp.view.fragment.teams.model.SearchResponse
-import com.simphiwe.footballapp.view.fragment.teams.teamslist.model.TeamsResponse
-import com.simphiwe.footballapp.view.fragment.topscorers.model.TopScorersResponse
+import com.simphiwe.footballapp.data.model.player.PlayersResponse
+import com.simphiwe.footballapp.data.model.search.SearchResponse
+import com.simphiwe.footballapp.data.model.teams.TeamsResponse
+import com.simphiwe.footballapp.data.model.topscorers.TopScorersResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
