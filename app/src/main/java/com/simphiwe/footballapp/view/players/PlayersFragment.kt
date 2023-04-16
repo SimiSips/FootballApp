@@ -30,7 +30,7 @@ class PlayersFragment : Fragment() {
     private lateinit var binding: FragmentPlayersBinding
     private lateinit var playersRecyclerView: RecyclerView
     private lateinit var errorText: TextView
-    var team: Int = 65
+    var team: Int = 50
     var season: Int = 2022
 
 
@@ -91,14 +91,23 @@ class PlayersFragment : Fragment() {
         playersRecyclerView.adapter = playersAdapter
 
 
-        viewModel.getPlayerViewState.observe(viewLifecycleOwner){ playerState ->
-            when(playerState){
+        viewModel.getPlayerViewState.observe(viewLifecycleOwner) { playerState ->
+            when (playerState) {
                 is UIState.Success<*> -> {
                     errorText.visibility = View.GONE
                     progressBar.visibility = View.GONE
-                    playerState.result as PlayersResponse
-                    playersAdapter.setUpdatedData(playerState.result.response)
 
+                    // Safely cast playerState.result to PlayersResponse
+                    val playersResponse = playerState.result as? PlayersResponse
+
+                    // Check if playersResponse is not null
+                    if (playersResponse != null) {
+                        playersAdapter.setUpdatedData(playersResponse.response)
+                    } else {
+                        // Handle the null case, e.g., show an error message or log the error
+                        errorText.visibility = View.VISIBLE
+                        errorText.text = "Failed to load player data"
+                    }
                 }
                 is UIState.Failure -> {
                     playerState.errorText
@@ -111,7 +120,6 @@ class PlayersFragment : Fragment() {
                 }
                 UIState.Empty -> TODO()
             }
-
         }
     }
 }

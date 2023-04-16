@@ -15,10 +15,10 @@ class PlayerRepositoryImpl @Inject constructor(private val api: PlayerApi) : Pla
             if(response.isSuccessful && result!=null) {
                 Resource.Success(result)
             } else {
-                Resource.Error(response.message())
+                Resource.Error(response.errorBody()?.string() ?: response.message())
             }
         } catch (e : Exception) {
-            Resource.Error(e.message?: "An error occurred while getting characters")
+            Resource.Error(e.message ?: "An error occurred while getting characters")
         }
     }
 
@@ -29,10 +29,10 @@ class PlayerRepositoryImpl @Inject constructor(private val api: PlayerApi) : Pla
             if(response.isSuccessful && result!=null) {
                 Resource.Success(result)
             } else {
-                Resource.Error(response.message())
+                Resource.Error(response.errorBody()?.string() ?: response.message())
             }
         } catch (e : Exception) {
-            Resource.Error(e.message?: "An error occurred while getting characters")
+            Resource.Error(e.message ?: "An error occurred while getting characters")
         }
     }
 }

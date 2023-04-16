@@ -47,7 +47,11 @@ class TopScorersFragment : Fragment() {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentTopScorersBinding.inflate(inflater, container, false)
         binding.let {
             topScorersRecyclerView = it.recyclerView
@@ -68,15 +72,20 @@ class TopScorersFragment : Fragment() {
         topScorersRecyclerView.adapter = topScorersAdapter
 
 
-        viewModel.getTopScorersViewState.observe(viewLifecycleOwner){ topScorersState ->
-            when(topScorersState){
+        viewModel.getTopScorersViewState.observe(viewLifecycleOwner) { topScorersState ->
+            when (topScorersState) {
                 is UIState.Success<*> -> {
                     errorText.visibility = View.GONE
                     progressBar.visibility = View.GONE
-                    topScorersState.result as TopScorersResponse
-                    topScorersAdapter.setUpdatedData(topScorersState.result.response)
 
+                    val topScorersResponse = topScorersState.result as? TopScorersResponse
 
+                    if (topScorersResponse != null) {
+                        topScorersAdapter.setUpdatedData(topScorersResponse.response)
+                    } else {
+                        errorText.visibility = View.VISIBLE
+                        errorText.text = "Failed to load top scorers data"
+                    }
                 }
                 UIState.Empty -> TODO()
                 is UIState.Failure -> {
@@ -89,7 +98,6 @@ class TopScorersFragment : Fragment() {
                     progressBar.visibility = View.VISIBLE
                 }
             }
-
         }
     }
 }

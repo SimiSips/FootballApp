@@ -18,7 +18,7 @@ class TeamsRepositoryImpl @Inject constructor(private val api: PlayerApi) : Team
                 Resource.Error(response.message())
             }
         } catch (e : Exception) {
-            Resource.Error(e.message?: "An error occurred while getting characters")
+            Resource.Error(e.message ?: "An error occurred while getting characters")
         }
     }
 
@@ -32,7 +32,7 @@ class TeamsRepositoryImpl @Inject constructor(private val api: PlayerApi) : Team
                 Resource.Error(response.message())
             }
         } catch (e : Exception) {
-            Resource.Error(e.message?: "An error occurred while getting characters")
+            Resource.Error(e.message ?: "An error occurred while getting characters")
         }
     }
 }

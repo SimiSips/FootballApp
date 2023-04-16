@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.simphiwe.footballapp.R
-import com.simphiwe.footballapp.data.model.topscorers.Response
+import com.simphiwe.footballapp.data.model.player.Response
 
 
 import com.squareup.picasso.Picasso
